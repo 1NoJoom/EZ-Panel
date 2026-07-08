@@ -24,4 +24,4 @@ printf "\r${GREEN}Downloading EZ-Panel ($LATEST_VERSION)... Done!  ${NC}\n"
 mv "/tmp/EZ-Panel" "/usr/local/bin/EZ-Panel"
 chmod +x "/usr/local/bin/EZ-Panel"
 
-EZ-Panel
+EZ-Panel </dev/tty
