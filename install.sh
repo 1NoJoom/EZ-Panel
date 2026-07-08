@@ -2,14 +2,12 @@
 
 CYAN='\e[1;36m'
 GREEN='\e[1;32m'
-RED='\e[1;31m'
 NC='\e[0m'
 
 LATEST_VERSION=$(curl -s https://api.github.com/repos/1NoJoom/EZ-Panel/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 [ -z "$LATEST_VERSION" ] && LATEST_VERSION="latest"
 
-
-curl -fsSL "https://github.com/1NoJoom/EZ-Panel/releases/latest/download/EZ-Panel" -o "/tmp/EZ-Panel" &
+curl -sL "https://github.com/1NoJoom/EZ-Panel/releases/latest/download/EZ-Panel" -o "/tmp/EZ-Panel" &
 PID=$!
 
 SPIN='-\|/'
@@ -21,15 +19,9 @@ while kill -0 $PID 2>/dev/null; do
     sleep 0.1
 done
 
-if [ -s "/tmp/EZ-Panel" ] && ! grep -q "404" "/tmp/EZ-Panel"; then
-    printf "\r${GREEN}Downloading EZ-Panel ($LATEST_VERSION)... Done!  ${NC}\n"
-    mv "/tmp/EZ-Panel" "/usr/local/bin/EZ-Panel"
-    chmod +x "/usr/local/bin/EZ-Panel"
-    
+printf "\r${GREEN}Downloading EZ-Panel ($LATEST_VERSION)... Done!  ${NC}\n"
 
-    EZ-Panel </dev/tty
-else
-    printf "\r${RED}Error: Failed to download EZ-Panel. File not found (404).${NC}\n"
-    rm -f "/tmp/EZ-Panel"
-    exit 1
-fi
+mv "/tmp/EZ-Panel" "/usr/local/bin/EZ-Panel"
+chmod +x "/usr/local/bin/EZ-Panel"
+
+EZ-Panel
