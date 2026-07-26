@@ -1,27 +1,48 @@
 #!/bin/bash
 
+set -e
+
 CYAN='\e[1;36m'
 GREEN='\e[1;32m'
+RED='\e[1;31m'
 NC='\e[0m'
 
-LATEST_VERSION=$(curl -s https://api.github.com/repos/1NoJoom/EZ-Panel/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-[ -z "$LATEST_VERSION" ] && LATEST_VERSION="latest"
+REPO_RAW="https://raw.githubusercontent.com/1NoJoom/EZ-Panel/main"
+INSTALL_PATH="/usr/local/bin/EZ-Panel"
+TMP_PATH="/tmp/EZ-Panel.py"
 
-curl -sL "https://github.com/1NoJoom/EZ-Panel/releases/latest/download/EZ-Panel" -o "/tmp/EZ-Panel" &
-PID=$!
+if [ "$(id -u)" -ne 0 ]; then
+    echo -e "${RED}[-] Please run as root (sudo).${NC}"
+    exit 1
+fi
 
-SPIN='-\|/'
-i=0
+echo -e "${CYAN}[*] Installing EZ-Panel (open source)...${NC}"
 
-while kill -0 $PID 2>/dev/null; do
-    i=$(( (i+1) %4 ))
-    printf "\r${CYAN}Downloading EZ-Panel ($LATEST_VERSION)... ${SPIN:$i:1}${NC}"
-    sleep 0.1
-done
+if command -v apt-get >/dev/null 2>&1; then
+    apt-get update -y >/dev/null 2>&1 || true
+    apt-get install -y python3 python3-pip curl >/dev/null 2>&1 || true
+fi
 
-printf "\r${GREEN}Downloading EZ-Panel ($LATEST_VERSION)... Done!  ${NC}\n"
+pip3 install --break-system-packages requests urllib3 >/dev/null 2>&1 || \
+pip3 install requests urllib3 >/dev/null 2>&1 || true
 
-mv "/tmp/EZ-Panel" "/usr/local/bin/EZ-Panel"
-chmod +x "/usr/local/bin/EZ-Panel"
+curl -fsSL "${REPO_RAW}/EZ-Panel.py?v=$(date +%s)" -o "${TMP_PATH}"
 
-EZ-Panel
+if [ ! -s "${TMP_PATH}" ]; then
+    echo -e "${RED}[-] Download failed. Check GitHub repo/file name.${NC}"
+    exit 1
+fi
+
+if ! head -n 1 "${TMP_PATH}" | grep -q "python"; then
+    printf '%s\n%s\n' '#!/usr/bin/env python3' "$(cat "${TMP_PATH}")" > "${TMP_PATH}.tmp"
+    mv "${TMP_PATH}.tmp" "${TMP_PATH}"
+fi
+
+mv "${TMP_PATH}" "${INSTALL_PATH}"
+chmod +x "${INSTALL_PATH}"
+
+echo -e "${GREEN}[+] Installed to ${INSTALL_PATH}${NC}"
+echo -e "${GREEN}[+] Launching EZ-Panel...${NC}"
+echo
+
+exec "${INSTALL_PATH}"
