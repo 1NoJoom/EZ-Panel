@@ -9,7 +9,7 @@
 برای نصب اسکریپت، کافیست با دسترسی روت (Root) وارد ترمینال سرور خود شده و دستور زیر را اجرا کنید:
 
 ```bash
-sudo bash -c "$(curl -sL "https://raw.githubusercontent.com/1NoJoom/EZ-Panel/main/install.sh?v=$(date +%s)" | tr -d '\r')"
+sudo bash -c "$(curl -sL "https://raw.githubusercontent.com/1NoJoom/EZ-Panel/main/install.sh")"
 ```
 ## 🔄 نحوه اجرای مجدد منو
 در صورتی که مراحل نصب به پایان رسید یا از منوی برنامه خارج شدید، نیازی به اجرای مجدد دستور نصب نیست. برای دسترسی دوباره به منوی مدیریت ابزار، کافیست کلمه زیر را در ترمینال تایپ و اینتر کنید:
