@@ -688,7 +688,7 @@ def handle_3xui_flow():
         show_banner()
         print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_CYAN}[ 3X-UI CONTROL PANEL ]{C_RESET}")
         print(f"{C_BLUE}{'=' * 45}{C_RESET}")
-        print(f"  {C_YELLOW}[1]{C_RESET} Batch Create  (all 36 countries)")
+        print(f"  {C_YELLOW}[1]{C_RESET} Batch Create  (all 50 countries)")
         print(f"  {C_YELLOW}[2]{C_RESET} Custom Create (select countries)")
         print(f"  {C_YELLOW}[3]{C_RESET} T.Sin Installed Nodes")
         print(f"  {C_YELLOW}[4]{C_RESET} Delete Configurations")
@@ -714,7 +714,7 @@ def handle_3xui_flow():
                 show_banner()
                 print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_RED}[ DELETE CONFIGS MENU ]{C_RESET}")
                 print(f"{C_BLUE}{'=' * 45}{C_RESET}")
-                print(f"  {C_YELLOW}[1]{C_RESET} Batch Delete  (all 36 countries)")
+                print(f"  {C_YELLOW}[1]{C_RESET} Batch Delete  (all 50 countries)")
                 print(f"  {C_YELLOW}[2]{C_RESET} Custom Delete (select countries)")
                 print(f"  {C_RED}[0]{C_RESET} Go Back")
                 print(f"{C_BLUE}{'=' * 45}{C_RESET}")
@@ -733,7 +733,7 @@ def handle_3xui_flow():
 
                 if del_choice == "1":
                     show_banner()
-                    print(f"{C_RED}⚠️  WARNING: Deletes ALL 36 country configs (inbound + SOCKS + routing).{C_RESET}")
+                    print(f"{C_RED}⚠️  WARNING: Deletes ALL 50 country configs (inbound + SOCKS + routing).{C_RESET}")
                     if not confirm_proceed("Delete ALL?"):
                         print(f"{C_YELLOW}Cancelled.{C_RESET}")
                         time.sleep(1.5)
@@ -888,7 +888,7 @@ def handle_3xui_flow():
                 print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_CYAN}[ CUSTOM CREATE — SELECT COUNTRIES ]{C_RESET}")
                 print(f"{C_BLUE}{'─' * 66}{C_RESET}")
                 if not all_available:
-                    print(f"  {C_GREEN}🎉 All 36 countries already configured!{C_RESET}")
+                    print(f"  {C_GREEN}🎉 All 50 countries already configured!{C_RESET}")
                     print(f"{C_BLUE}{'─' * 66}{C_RESET}")
                     input(f"\nPress {C_BOLD}{C_WHITE}[Enter]{C_RESET} to continue...")
                     break
@@ -1567,7 +1567,7 @@ def handle_pg_flow():
         show_banner()
         print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_CYAN}[ PASARGAD CONTROL PANEL ]{C_RESET}")
         print(f"{C_BLUE}{'=' * 45}{C_RESET}")
-        print(f"  {C_YELLOW}[1]{C_RESET} Batch Create  (all 36 countries)")
+        print(f"  {C_YELLOW}[1]{C_RESET} Batch Create  (all 50 countries)")
         print(f"  {C_YELLOW}[2]{C_RESET} Custom Create (select countries)")
         print(f"  {C_YELLOW}[3]{C_RESET} T.Sin Installed Nodes")
         print(f"  {C_YELLOW}[4]{C_RESET} Delete Configurations")
@@ -1593,7 +1593,7 @@ def handle_pg_flow():
                 show_banner()
                 print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_RED}[ DELETE CONFIGS MENU ]{C_RESET}")
                 print(f"{C_BLUE}{'=' * 45}{C_RESET}")
-                print(f"  {C_YELLOW}[1]{C_RESET} Batch Delete  (all 36 countries)")
+                print(f"  {C_YELLOW}[1]{C_RESET} Batch Delete  (all 50 countries)")
                 print(f"  {C_YELLOW}[2]{C_RESET} Custom Delete (select countries)")
                 print(f"  {C_RED}[0]{C_RESET} Go Back")
                 print(f"{C_BLUE}{'=' * 45}{C_RESET}")
@@ -1607,8 +1607,8 @@ def handle_pg_flow():
 
                 if del_choice == "1":
                     show_banner()
-                    print(f"{C_RED}⚠️  WARNING: Deletes ALL 36 country configs (inbound + SOCKS + routing + host).{C_RESET}")
-                    if not confirm_proceed("Delete ALL 36 countries?"):
+                    print(f"{C_RED}⚠️  WARNING: Deletes ALL 50 country configs (inbound + SOCKS + routing + host).{C_RESET}")
+                    if not confirm_proceed("Delete ALL 50 countries?"):
                         print(f"{C_YELLOW}Cancelled.{C_RESET}")
                         time.sleep(1.5)
                         continue
@@ -1734,7 +1734,7 @@ def handle_pg_flow():
                 print(f"{C_RED}📌{C_RESET} {C_BOLD}{C_CYAN}[ CUSTOM CREATE — SELECT COUNTRIES ]{C_RESET}")
                 print(f"{C_BLUE}{'─' * 66}{C_RESET}")
                 if not all_available:
-                    print(f"  {C_GREEN}🎉 All 36 countries already configured!{C_RESET}")
+                    print(f"  {C_GREEN}🎉 All 50 countries already configured!{C_RESET}")
                     print(f"{C_BLUE}{'─' * 66}{C_RESET}")
                     input(f"\nPress {C_BOLD}{C_WHITE}[Enter]{C_RESET} to continue...")
                     break
